@@ -14,6 +14,7 @@ import StationsContainer from './containers/StationsContainer';
 import App from './components/App';
 import Albums from './components/Albums';
 import Songs from './components/Songs';
+import Station from './components/Station';
 
 import axios from 'axios';
 import store from './store';
@@ -65,6 +66,7 @@ ReactDOM.render(
         <Route path="/albums/:albumId" component={AlbumContainer} onEnter={onAlbumEnter}/>
         <Route path="/artists" component={FilterableArtistsContainer}/>
         <Route path="/stations" component={StationsContainer} onEnter={onStationsEnter} />
+        <Route path="/stations/:genreName" component={Station} />
         <Route path="/artists/:artistId" component={ArtistContainer} onEnter={onArtistEnter}>
           <Route path="albums" component={Albums}/>
           <Route path="songs" component={Songs}/>

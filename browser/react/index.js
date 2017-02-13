@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, hashHistory, IndexRedirect} from 'react-router';
+import {Router, Route, hashHistory, IndexRedirect, IndexRoute} from 'react-router';
 
 import AlbumsContainer from './containers/AlbumsContainer';
 import AlbumContainer from './containers/AlbumContainer';
@@ -10,11 +10,11 @@ import NewPlaylistContainer from './containers/NewPlaylistContainer';
 import PlaylistContainer from './containers/PlaylistContainer';
 import LyricsContainer from './containers/LyricsContainer';
 import StationsContainer from './containers/StationsContainer';
+import StationContainer from './containers/StationContainer';
 
 import App from './components/App';
 import Albums from './components/Albums';
 import Songs from './components/Songs';
-import Station from './components/Station';
 
 import axios from 'axios';
 import store from './store';
@@ -65,8 +65,10 @@ ReactDOM.render(
         <Route path="/albums" component={AlbumsContainer}/>
         <Route path="/albums/:albumId" component={AlbumContainer} onEnter={onAlbumEnter}/>
         <Route path="/artists" component={FilterableArtistsContainer}/>
-        <Route path="/stations" component={StationsContainer} onEnter={onStationsEnter} />
-        <Route path="/stations/:genreName" component={Station} />
+        <Route path="/stations" onEnter={onStationsEnter}>
+          <Route path="/stations/:genreName" component={StationContainer} />
+          <IndexRoute component={StationsContainer} />
+        </Route>
         <Route path="/artists/:artistId" component={ArtistContainer} onEnter={onArtistEnter}>
           <Route path="albums" component={Albums}/>
           <Route path="songs" component={Songs}/>

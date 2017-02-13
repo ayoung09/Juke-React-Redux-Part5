@@ -2,10 +2,11 @@ import React from 'react';
 import {Link} from 'react-router';
 
 export default function (props) {
-
+  console.log('ownProps: ', props.ownProps);
   const artist = props.selectedArtist;
   const albums = artist.albums || [];
   const songs = artist.songs || [];
+  const player = props.player
 
   return (
     <div>
@@ -17,7 +18,10 @@ export default function (props) {
       {
         props.children && React.cloneElement(props.children, Object.assign({}, props, {
           albums: albums,
-          songs: songs
+          songs: songs,
+          currentSong: player.currentSong,
+          isPlaying: player.isPlaying,
+          toggleOne: props.toggleOne
         }))
       }
     </div>

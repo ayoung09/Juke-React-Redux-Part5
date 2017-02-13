@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import FilterInput from '../components/FilterInput';
 import Artists from '../components/Artists';
 
@@ -7,25 +8,13 @@ import store from '../store';
 class FilterableArtistsContainer extends React.Component {
 
   constructor() {
-
     super();
 
     this.state = Object.assign({
       inputValue: ''
-    }, store.getState().artists);
+      }, store.getState().artists);
 
     this.handleChange = this.handleChange.bind(this);
-
-  }
-
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => {
-      this.setState(store.getState().artists);
-    });
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
   }
 
   handleChange(evt) {
@@ -51,4 +40,12 @@ class FilterableArtistsContainer extends React.Component {
   }
 }
 
-export default FilterableArtistsContainer;
+function mapStateToProps(outerState){
+  return {};
+}
+
+function mapDispatchToProps(dispatch){
+  return{};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FilterableArtistsContainer);

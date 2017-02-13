@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import NewPlaylist from '../components/NewPlaylist';
 import store from '../store';
 import {addNewPlaylist} from '../action-creators/playlists';
@@ -57,4 +58,12 @@ class FormContainer extends React.Component {
 
 }
 
-export default FormContainer;
+function mapStateToProps(state) {
+  return {};
+}
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FormContainer);

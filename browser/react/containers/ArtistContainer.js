@@ -18,7 +18,7 @@ function mapStateToProps(state, ownProps){
 function mapDispatchToProps(dispatch){
   return {
     toggleOne: (song, list) => { dispatch(toggleSong(song, list)) }
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Artist);

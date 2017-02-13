@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import store from '../store';
 import Lyrics from '../components/Lyrics';
 
 import {searchLyrics} from '../action-creators/lyrics';
 
-export default class extends Component {
+ class LyricsContainer extends Component {
 
   constructor() {
 
@@ -19,12 +20,6 @@ export default class extends Component {
     this.handleArtistInput = this.handleArtistInput.bind(this);
     this.handleSongInput = this.handleSongInput.bind(this);
 
-  }
-
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => {
-      this.setState(store.getState());
-    });
   }
 
   handleArtistInput(artist) {
@@ -42,10 +37,6 @@ export default class extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
   render() {
     return (
       <Lyrics
@@ -58,3 +49,13 @@ export default class extends Component {
   }
 
 }
+
+function mapStateToProps(state){
+  return {};
+}
+
+function mapDispatchToProps(dispatch, ownProps){
+  return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LyricsContainer);
